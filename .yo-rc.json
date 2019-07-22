@@ -1,0 +1,45 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "tr.com.metix.testproject",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.1.2",
+    "applicationType": "monolith",
+    "baseName": "TestProject",
+    "packageName": "tr.com.metix.testproject",
+    "packageFolder": "tr/com/metix/testproject",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NDY4N2QxMmQ1MTJlNThmNTgzMzEwMWE2NGM0OTI1YTMyYWJjYjI4ZTYzM2Y5YWFkM2VkZGRhNjAyNmZhMjM5MGUxMjE0OWIxYmE0MDkwZTA4ZjhhOTNlMjVmMjAwNjA0ZGNhN2IzYmZhNjcxOWY4YzQzNjY4YWUzMDBlZGYxYmU=",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-audit-helper",
+        "version": "1.0.3"
+      }
+    ],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en", "tr"]
+  }
+}
