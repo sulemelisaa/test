@@ -8,6 +8,7 @@ import tr.com.metix.testproject.service.TestService;
 import tr.com.metix.testproject.service.dto.TestDTO;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -23,7 +24,7 @@ public class TestResource {
     }
 
     @PostMapping("/testcreate")
-    public Test createTest(@Valid @RequestBody TestDTO testDTO){
+    public Test createTest(@Valid @RequestBody TestDTO testDTO) {
 
         Test test = testService.createTest(testDTO);
 
@@ -33,7 +34,22 @@ public class TestResource {
     @DeleteMapping("/deletetest/{id}")
     public void deleteTest(@PathVariable Long id) {
 
-            testService.deleteTest(id);
-        }
+        testService.deleteTest(id);
+    }
+
+    @PutMapping("/testupdate")
+    public Optional<TestDTO> updateTest(@Valid @RequestBody TestDTO testDTO) {
+
+
+        Optional<TestDTO> updateTest = testService.updateTest(testDTO);
+
+        return updateTest;
+
+    }
+
+    @GetMapping("/tests")
+    public List<TestDTO> selectTest() {
+        return testService.getTest();
+    }
 
 }
