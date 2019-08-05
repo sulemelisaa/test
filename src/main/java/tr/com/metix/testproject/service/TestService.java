@@ -7,6 +7,7 @@ import tr.com.metix.testproject.domain.User;
 import tr.com.metix.testproject.repository.UserRepository;
 import tr.com.metix.testproject.security.SecurityUtils;
 import tr.com.metix.testproject.service.dto.TestDTO;
+import tr.com.metix.testproject.web.rest.errors.BadRequestAlertException;
 
 import java.util.Optional;
 
@@ -27,8 +28,8 @@ public class TestService {
 
         Optional<User> user = userRepository.findById(u.get().getId()); //current ın user tablosundaki satırı
 
-        if (user.get().getAuthorities().contains("ROLE_ADMIN")) {
-            System.out.println("Role admin : " + u.get().getId() + user.get().getAuthorities());
+        if (!user.get().getAuthorities().contains("ROLE_ADMIN")) {
+            throw new BadRequestAlertException("Yalnızca Admin Rolü Test ekleyebilir!! ", null, "test");
         }
 
         else {
