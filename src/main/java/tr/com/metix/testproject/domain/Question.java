@@ -1,5 +1,8 @@
 package tr.com.metix.testproject.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -19,6 +22,7 @@ public class Question implements Serializable {
     private String value;
 
     @ManyToMany
+    @JsonIgnoreProperties
     @JoinTable(name = "question_test",
         joinColumns = @JoinColumn(name = "question_id"),
         inverseJoinColumns = @JoinColumn(name = "test_id"))
