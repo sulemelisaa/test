@@ -1,6 +1,5 @@
 package tr.com.metix.testproject.domain;
 
-import org.graalvm.compiler.lir.LIRInstruction;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "usertest")
+@Table(name = "user_test")
 public class UserTest implements Serializable {
 
     @Id
@@ -25,13 +24,13 @@ public class UserTest implements Serializable {
 
      @ManyToMany
      @JoinTable(name = "usertest_user",
-         joinColumns = @JoinColumn(name = "usertest_id"),
+         joinColumns = @JoinColumn(name = "user_test_id"),
          inverseJoinColumns = @JoinColumn(name = "user_id"))
      private Set<User> user = new HashSet<>();
 
       @ManyToMany
       @JoinTable(name = "usertest_test",
-          joinColumns = @JoinColumn(name = "usertest_id"),
+          joinColumns = @JoinColumn(name = "user_test_id"),
           inverseJoinColumns = @JoinColumn(name = "test_id"))
       private Set<Test> test = new HashSet<>();
 

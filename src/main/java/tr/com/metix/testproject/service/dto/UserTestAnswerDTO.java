@@ -1,31 +1,32 @@
 package tr.com.metix.testproject.service.dto;
 
-import tr.com.metix.testproject.domain.Answer;
-import tr.com.metix.testproject.domain.UserTest;
-
 import java.util.Set;
 
 public class UserTestAnswerDTO {
 
-    private Long userTestAnsverid;
-    private Set<UserTestDTO> userTestId;
+    private Long id;
+    private Set<UserTestDTO> userTestDTOS;
     private Long answerId;
 
 
-    public Long getUserTestAnsverid() {
-        return userTestAnsverid;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserTestAnsverid(Long userTestAnsverid) {
-        this.userTestAnsverid = userTestAnsverid;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Set<UserTestDTO> getUserTestId() {
-        return userTestId;
+    public void setUserTestDTOS(Set<UserTestDTO> userTestDTOS) {
+        this.userTestDTOS = userTestDTOS;
     }
 
-    public void setUserTestId(Set<UserTestDTO> userTestId) {
-        this.userTestId = userTestId;
+    public Set<UserTestDTO> getUserTestDTOS() {
+        return userTestDTOS;
+    }
+
+    public void setUserTestId(Set<UserTestDTO> userTestDTOS) {
+        this.userTestDTOS = userTestDTOS;
     }
 
     public Long getAnswerId() {

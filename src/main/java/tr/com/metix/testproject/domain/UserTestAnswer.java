@@ -7,23 +7,23 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "usertestanswer")
+@Table(name = "user_test_answer")
 public class UserTestAnswer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
-    @Column(name = "usertestanswer_id")
+    @Column(name = "user_test_answer_id")
     private Long id;
 
     @ManyToMany
     @JoinTable(name = "usertestanswer_usertest",
-        joinColumns = @JoinColumn(name = "usertestanswer_id"),
-        inverseJoinColumns = @JoinColumn(name = "usertest_id"))
+        joinColumns = @JoinColumn(name = "user_test_answer_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_test_id"))
     private Set<UserTest> usertest = new HashSet<>();
 
     @ManyToOne
-    private Answer answerId;
+    private Answer answer;
 
     public Set<UserTest> getUsertest() {
         return usertest;
@@ -33,14 +33,13 @@ public class UserTestAnswer implements Serializable {
         this.usertest = usertest;
     }
 
-    public Answer getAnswerId() {
-        return answerId;
+    public Answer getAnswer() {
+        return answer;
     }
 
-    public void setAnswerId(Answer answerId) {
-        this.answerId = answerId;
+    public void setAnswer(Answer answer) {
+        this.answer = answer;
     }
-
 
     public Long getId() {
         return id;

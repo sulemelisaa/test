@@ -13,10 +13,10 @@ public interface QuestionMapper {
 
     QuestionMapper INSTANCE = Mappers.getMapper(QuestionMapper.class);
 
-    @Mapping(source = "test.id", target = "testId")
+    @Mapping(source = "test", target = "testDTOS")
     QuestionDTO questionToQuestionDTO(Question question);
 
-    @Mapping(source = "testId", target = "test.id")
+    @Mapping(source = "testDTOS" ,  target = "test")
     Question questionDTOToQuestion(QuestionDTO questionDTO);
 
 }

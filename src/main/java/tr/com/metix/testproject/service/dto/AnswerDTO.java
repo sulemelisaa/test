@@ -5,17 +5,17 @@ import tr.com.metix.testproject.domain.Question;
 import java.util.Set;
 
 public class AnswerDTO {
-    private Long answerId;
+    private Long id;
     private String value;
     private boolean isCorrect;
-    private Set<QuestionDTO> questionId;
+    private Set<QuestionDTO> questionDTOS;
 
     public Long getId() {
-        return answerId;
+        return id;
     }
 
     public void setId(Long id) {
-        this.answerId = id;
+        this.id = id;
     }
 
     public String getValue() {
@@ -34,19 +34,12 @@ public class AnswerDTO {
         isCorrect = correct;
     }
 
-    public Long getAnswerId() {
-        return answerId;
+
+    public Set<QuestionDTO> getQuestionDTOS() {
+        return questionDTOS;
     }
 
-    public void setAnswerId(Long answerId) {
-        this.answerId = answerId;
-    }
-
-    public Set<QuestionDTO> getQuestionId() {
-        return questionId;
-    }
-
-    public void setQuestionId(Set<QuestionDTO> questionId) {
-        this.questionId = questionId;
+    public void setQuestionDTOS(Set<QuestionDTO> questionDTOS) {
+        this.questionDTOS = questionDTOS;
     }
 }

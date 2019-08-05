@@ -14,9 +14,9 @@ public interface AnswerMapper {
 
     AnswerMapper INSTANCE = Mappers.getMapper(AnswerMapper.class);
 
-    @Mapping(source = "question.id", target = "questionId")
+    @Mapping(source = "question", target = "questionDTOS")
     AnswerDTO answerToAnswerDTO(Answer answer);
 
-    @Mapping(source = "questionId", target = "question.id")
+    @Mapping(source = "questionDTOS", target = "question")
     Answer answerDTOToAnswer(AnswerDTO answerDTO);
 }
