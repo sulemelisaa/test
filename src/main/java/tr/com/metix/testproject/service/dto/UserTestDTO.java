@@ -1,24 +1,21 @@
 package tr.com.metix.testproject.service.dto;
 
-import tr.com.metix.testproject.domain.Test;
-import tr.com.metix.testproject.domain.User;
-
 import java.util.Set;
 
 public class UserTestDTO {
 
-    private Long id;
+    private Long userTestId;
     private String status;
     private Long score;
-    private Set<Long> userid;
-    private Set<Long> testid;
+    private Set<UserDTO> userId;
+    private Set<TestDTO> testId;
 
     public Long getId() {
-        return id;
+        return userTestId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.userTestId = id;
     }
 
     public String getStatus() {
@@ -37,19 +34,35 @@ public class UserTestDTO {
         this.score = score;
     }
 
-    public Set<Long> getUserid() {
-        return userid;
+    public Long getUserTestid() {
+        return userTestId;
     }
 
-    public void setUserid(Set<Long> userid) {
-        this.userid = userid;
+    public void setUserTestid(Long userTestid) {
+        this.userTestId = userTestid;
     }
 
-    public Set<Long> getTestid() {
-        return testid;
+    public Long getUserTestId() {
+        return userTestId;
     }
 
-    public void setTestid(Set<Long> testid) {
-        this.testid = testid;
+    public void setUserTestId(Long userTestId) {
+        this.userTestId = userTestId;
+    }
+
+    public Set<UserDTO> getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Set<UserDTO> userId) {
+        this.userId = userId;
+    }
+
+    public Set<TestDTO> getTestId() {
+        return testId;
+    }
+
+    public void setTestId(Set<TestDTO> testId) {
+        this.testId = testId;
     }
 }

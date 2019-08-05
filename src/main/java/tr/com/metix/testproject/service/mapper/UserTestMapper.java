@@ -15,11 +15,11 @@ public interface UserTestMapper
 
     UserTestMapper INSTANCE = Mappers.getMapper(UserTestMapper.class);
 
-    @Mapping(source = "user.id", target = "userid")
-    @Mapping(source = "test.id", target = "testid")
+    @Mapping(source = "user.id", target = "userId")
+    @Mapping(source = "test.id", target = "testId")
     UserTestDTO userTestToUserTestDTO(UserTest userTest);
 
-    @Mapping(source = "userid", target = "user.id")
-    @Mapping(source = "testid", target = "test.id")
+    @Mapping(source = "userId", target = "user.id")
+    @Mapping(source = "testId", target = "test.id")
     UserTest userTestDTOToUserTest(UserTestDTO userTestDTO);
 }

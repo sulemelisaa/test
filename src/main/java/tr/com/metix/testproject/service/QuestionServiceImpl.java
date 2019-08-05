@@ -1,4 +1,4 @@
 package tr.com.metix.testproject.service;
 
-public class QuestionServiceImpl {
+public class QuestionServiceImpl implements QuestionService {
 }

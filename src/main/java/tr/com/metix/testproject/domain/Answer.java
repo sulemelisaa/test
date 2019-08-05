@@ -7,7 +7,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "Answer")
+@Table(name = "answer")
 public class Answer implements Serializable {
 
     @Id

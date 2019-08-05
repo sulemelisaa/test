@@ -3,15 +3,17 @@ package tr.com.metix.testproject.service.dto;
 import java.util.Set;
 
 public class QuestionDTO {
-    private Long id;
+    private Long questionId;
     private String value;
+    private Set<TestDTO> testId;
+
 
     public Long getId() {
-        return id;
+        return questionId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.questionId = id;
     }
 
     public String getValue() {
@@ -22,15 +24,19 @@ public class QuestionDTO {
         this.value = value;
     }
 
-    public Set<Long> getTestid() {
-        return testid;
+    public Long getQuestionId() {
+        return questionId;
     }
 
-    public void setTestid(Set<Long> testid) {
-        this.testid = testid;
+    public void setQuestionId(Long questionId) {
+        this.questionId = questionId;
     }
 
-    private Set<Long> testid;
+    public Set<TestDTO> getTestId() {
+        return testId;
+    }
 
-
+    public void setTestId(Set<TestDTO> testId) {
+        this.testId = testId;
+    }
 }

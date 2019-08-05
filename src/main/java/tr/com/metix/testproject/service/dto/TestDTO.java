@@ -2,31 +2,31 @@ package tr.com.metix.testproject.service.dto;
 
 public class TestDTO {
 
-    private Long testid;
-    private String testname;
-    private String testcategory;
+    private Long testId;
+    private String testName;
+    private String testCategory;
 
-    public Long getTestid() {
-        return testid;
+    public Long getTestId() {
+        return testId;
     }
 
-    public void setTestid(Long testid) {
-        this.testid = testid;
+    public void setTestId(Long testId) {
+        this.testId = testId;
     }
 
-    public String getTestname() {
-        return testname;
+    public String getTestName() {
+        return testName;
     }
 
-    public void setTestname(String testname) {
-        this.testname = testname;
+    public void setTestName(String testName) {
+        this.testName = testName;
     }
 
-    public String getTestcategory() {
-        return testcategory;
+    public String getTestCategory() {
+        return testCategory;
     }
 
-    public void setTestcategory(String testcategory) {
-        this.testcategory = testcategory;
+    public void setTestCategory(String testCategory) {
+        this.testCategory = testCategory;
     }
 }
