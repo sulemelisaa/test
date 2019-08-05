@@ -22,10 +22,10 @@ public class TestResource {
     }
 
     @PostMapping("/testcreate")
-    public Long createTest(@Valid @RequestBody TestDTO testDTO){
+    public Test createTest(@Valid @RequestBody TestDTO testDTO){
 
-        Long test = testService.createTest(testDTO);
+        Test test = testService.createTest(testDTO);
 
-        return 1L;
+        return test;
     }
 }
