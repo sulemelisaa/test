@@ -22,24 +22,28 @@ public class TestService {
         this.userRepository = userRepository;
     }
 
-    public Long createTest(TestDTO testDTO) {
+    public Long createTest(TestDTO testDTO) throws BadRequestAlertException {
 
+        // Current User
         Optional<User> u = userService.getUserWithAuthoritiesByLogin(SecurityUtils.getCurrentUserLogin().get());
+        System.out.print("current yetkisiiii: " +u.get().getAuthorities());
 
-        Optional<User> user = userRepository.findById(u.get().getId()); //current ın user tablosundaki satırı
+        //current'ın user tablosundaki satırı
+        Optional<User> user = userRepository.findById(u.get().getId());
+        System.out.print("user yetkisiiii: " + user.get().getAuthorities());
 
-        if (!user.get().getAuthorities().contains("ROLE_ADMIN")) {
+
+        if (user.get().getAuthorities().equals("ROLE_USER")) {
+            System.out.print("\n hatalı: " + user.get().getAuthorities());
+            System.out.print("\n hatalı id: " + u.get().getId() + "\n ");
             throw new BadRequestAlertException("Yalnızca Admin Rolü Test ekleyebilir!! ", null, "test");
         }
-
-        else {
-            System.out.println("user admin : " + u.get().getId()+ user.get().getAuthorities());
-        }
+        System.out.print("\n hatasız: " + user.get().getAuthorities());
+        System.out.print("\n hatasız id: " + u.get().getId() + "\n ");
         return u.get().getId();
 
         /*
         if(u)
-
 
         Question question = new Question();
         Optional<Question> q = questionRepository.findById(question.getId());
