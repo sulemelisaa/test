@@ -1,8 +1,10 @@
 package tr.com.metix.testproject.service;
 
 
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tr.com.metix.testproject.domain.Authority;
 import tr.com.metix.testproject.domain.Test;
 import tr.com.metix.testproject.domain.User;
 import tr.com.metix.testproject.repository.TestRepository;
@@ -11,7 +13,9 @@ import tr.com.metix.testproject.security.SecurityUtils;
 import tr.com.metix.testproject.service.dto.TestDTO;
 import tr.com.metix.testproject.web.rest.errors.BadRequestAlertException;
 
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -37,7 +41,8 @@ public class TestService {
 
         Test test = new Test();
 
-        if (user.get().getAuthorities().equals("ROLE_USER")) {
+
+        if (user.get().getAuthorities().stream().filter(x->x.getName().equals("ROLE_ADMIN")).collect(Collectors.toList()).isEmpty()) {
  //           System.out.print("\n hatalı: " + user.get().getAuthorities());
  //           System.out.print("\n hatalı id: " + u.get().getId() + "\n ");
             throw new BadRequestAlertException("Yalnızca Admin Rolü Test ekleyebilir!! ", null, "test");
@@ -49,21 +54,24 @@ public class TestService {
 
         testRepository.save(test);
         return test;
-
-        /*
-        if(u)
-
-        Question question = new Question();
-        Optional<Question> q = questionRepository.findById(question.getId());
-
-        question.setValue(questionDTO.getValue());
-        question.setTest();
-
-        customerRepository.save(customer);
-        return customer;
-
-      */
     }
+
+    public void deleteTest(Long id) throws BadRequestAlertException {
+        Optional<User> u = userService.getUserWithAuthoritiesByLogin(SecurityUtils.getCurrentUserLogin().get());
+        Optional<User> user = userRepository.findById(u.get().getId());
+
+        if (user.get().getAuthorities().stream().filter(x->x.getName().equals("ROLE_ADMIN")).collect(Collectors.toList()).isEmpty()) {
+                 System.out.print("\n hatalı: " + user.get().getAuthorities());
+                 System.out.print("\n hatalı id: " + u.get().getId() + "\n ");
+            throw new BadRequestAlertException("Yalnızca Admin Rolü Test silebilir!! ", null, "test");
+        }
+        System.out.print("\n hatasız: " + user.get().getAuthorities());
+        System.out.print("\n hatasız id: " + u.get().getId() + "\n ");
+        testRepository.deleteById(id);
+
+    }
+
+
 }
 
 

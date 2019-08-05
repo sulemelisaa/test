@@ -1,24 +1,25 @@
 package tr.com.metix.testproject.web.rest;
 
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tr.com.metix.testproject.domain.Test;
+import tr.com.metix.testproject.repository.TestRepository;
 import tr.com.metix.testproject.service.TestService;
 import tr.com.metix.testproject.service.dto.TestDTO;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
 public class TestResource {
 
     private final TestService testService;
+    private final TestRepository testRepository;
 
-    public TestResource(TestService testService) {
+    public TestResource(TestService testService, TestRepository testRepository) {
         this.testService = testService;
+        this.testRepository = testRepository;
     }
 
     @PostMapping("/testcreate")
@@ -28,4 +29,11 @@ public class TestResource {
 
         return test;
     }
+
+    @DeleteMapping("/deletetest/{id}")
+    public void deleteTest(@PathVariable Long id) {
+
+            testService.deleteTest(id);
+        }
+
 }
