@@ -26,6 +26,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findOneByActivationKey(String activationKey);
 
+  //  List<User> findAll
 
     List<User> findAllByActivatedIsFalseAndActivationKeyIsNotNullAndCreatedDateBefore(Instant dateTime);
 
