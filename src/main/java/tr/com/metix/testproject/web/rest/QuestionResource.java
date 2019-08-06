@@ -35,22 +35,22 @@ public class QuestionResource {
 
         questionService.deleteQuestion(id);
     }
-/*
-    @PostMapping("/questioncreate")
-    public Question createQuestion(@Valid @RequestBody QuestionDTO questionDTO) {
-
-        Question question = questionService.createQuestion(questionDTO);
-
-        return question;
-    }
 
 
- */
     @PostMapping("/questioncreate")
     public QuestionDTO createQuestion(@RequestBody QuestionDTO questionDTO) throws URISyntaxException {
 
         if (questionDTO.getId() != null) {
             throw new BadRequestAlertException("Bu id'ye sahip soru zaten kayır edilmiş !! ", null, "idexists");
+        }
+        QuestionDTO qDTO = questionService.createQuestion(questionDTO);
+        return qDTO;
+    }
+
+    @PutMapping("/questionupdate")
+    public QuestionDTO updateQuestion (@RequestBody QuestionDTO questionDTO) throws URISyntaxException {
+        if (questionDTO.getId() == null) {
+            throw new BadRequestAlertException("geçersiz ID ! ", null, "idnull");
         }
         QuestionDTO qDTO = questionService.createQuestion(questionDTO);
         return qDTO;

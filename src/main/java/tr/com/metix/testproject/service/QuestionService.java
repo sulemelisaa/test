@@ -72,13 +72,14 @@ public class QuestionService {
             //           System.out.print("\n hatalı id: " + u.get().getId() + "\n ");
             throw new BadRequestAlertException("Yalnızca Admin Rolü Soru ekleyebilir!! ", null, "test");
         }
-        
+
         Question question = questionMapper.questionDTOToQuestion(questionDTO);
         question = questionRepository.save(question);
         return questionMapper.questionToQuestionDTO(question);
-
-
     }
+
+
+
 
 
 
