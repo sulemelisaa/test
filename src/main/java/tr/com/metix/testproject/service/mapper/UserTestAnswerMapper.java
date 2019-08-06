@@ -9,7 +9,7 @@ import tr.com.metix.testproject.domain.UserTest;
 import tr.com.metix.testproject.domain.UserTestAnswer;
 import tr.com.metix.testproject.service.dto.UserTestAnswerDTO;
 
-@Mapper(componentModel = "spring", uses ={ UserTest.class, Answer.class})
+@Mapper(componentModel = "spring", uses ={ UserTestMapper.class, AnswerMapper.class})
 public interface UserTestAnswerMapper {
 
     UserTestAnswerMapper INSTANCE = Mappers.getMapper(UserTestAnswerMapper.class);

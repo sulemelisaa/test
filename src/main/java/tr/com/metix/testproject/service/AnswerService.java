@@ -4,10 +4,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tr.com.metix.testproject.domain.Answer;
 import tr.com.metix.testproject.domain.User;
+import tr.com.metix.testproject.domain.UserTest;
 import tr.com.metix.testproject.repository.AnswerRepository;
 import tr.com.metix.testproject.repository.UserRepository;
+import tr.com.metix.testproject.repository.UserTestRepository;
 import tr.com.metix.testproject.security.SecurityUtils;
 import tr.com.metix.testproject.service.dto.AnswerDTO;
+import tr.com.metix.testproject.service.dto.UserTestAnswerDTO;
 import tr.com.metix.testproject.service.mapper.AnswerMapper;
 import tr.com.metix.testproject.web.rest.errors.BadRequestAlertException;
 
@@ -24,12 +27,15 @@ public class AnswerService {
     private final UserRepository userRepository;
     private  final AnswerRepository answerRepository;
     private final AnswerMapper answerMapper;
+    private  final UserTestRepository userTestRepository;
 
-    public AnswerService(UserService userService, UserRepository userRepository, AnswerRepository answerRepository, AnswerMapper answerMapper) {
+
+    public AnswerService(UserService userService, UserRepository userRepository, AnswerRepository answerRepository, AnswerMapper answerMapper, UserTestRepository userTestRepository) {
         this.userService = userService;
         this.userRepository = userRepository;
         this.answerRepository = answerRepository;
         this.answerMapper = answerMapper;
+        this.userTestRepository = userTestRepository;
     }
 
     public void deleteAnswer(Long id) throws BadRequestAlertException {
@@ -61,4 +67,7 @@ public class AnswerService {
         List<AnswerDTO>  answerDTOList = answerRepository.findAll().stream().map(answerMapper::answerToAnswerDTO).collect(Collectors.toCollection(LinkedList::new));
         return answerDTOList;
     }
+
+
+
 }

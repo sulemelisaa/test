@@ -27,7 +27,6 @@ public class TestResource {
     public Test createTest(@Valid @RequestBody TestDTO testDTO) {
 
         Test test = testService.createTest(testDTO);
-
         return test;
     }
 
@@ -39,7 +38,6 @@ public class TestResource {
 
     @PutMapping("/testupdate")
     public Optional<TestDTO> updateTest(@Valid @RequestBody TestDTO testDTO) {
-
 
         Optional<TestDTO> updateTest = testService.updateTest(testDTO);
 

@@ -5,6 +5,6 @@ import tr.com.metix.testproject.domain.Answer;
 
 public interface AnswerRepository  extends JpaRepository<Answer,Long> {
 
-    
+
 
 }
