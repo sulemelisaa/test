@@ -1,13 +1,17 @@
 package tr.com.metix.testproject.web.rest;
 
+
+
 import org.springframework.web.bind.annotation.*;
-import tr.com.metix.testproject.domain.Question;
-import tr.com.metix.testproject.domain.Test;
+
+
 import tr.com.metix.testproject.service.QuestionService;
 import tr.com.metix.testproject.service.dto.QuestionDTO;
-import tr.com.metix.testproject.service.dto.TestDTO;
 
-import javax.validation.Valid;
+import tr.com.metix.testproject.web.rest.errors.BadRequestAlertException;
+
+
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -31,15 +35,25 @@ public class QuestionResource {
 
         questionService.deleteQuestion(id);
     }
-
+/*
     @PostMapping("/questioncreate")
     public Question createQuestion(@Valid @RequestBody QuestionDTO questionDTO) {
 
-        Question question = questionService.q(testDTO);
+        Question question = questionService.createQuestion(questionDTO);
 
         return question;
     }
 
 
+ */
+    @PostMapping("/questioncreate")
+    public QuestionDTO createQuestion(@RequestBody QuestionDTO questionDTO) throws URISyntaxException {
+
+        if (questionDTO.getId() != null) {
+            throw new BadRequestAlertException("Bu id'ye sahip soru zaten kayır edilmiş !! ", null, "idexists");
+        }
+        QuestionDTO qDTO = questionService.createQuestion(questionDTO);
+        return qDTO;
+    }
 
 }

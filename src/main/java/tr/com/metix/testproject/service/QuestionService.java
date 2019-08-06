@@ -15,10 +15,7 @@ import tr.com.metix.testproject.service.mapper.QuestionMapper;
 import tr.com.metix.testproject.service.mapper.TestMapper;
 import tr.com.metix.testproject.web.rest.errors.BadRequestAlertException;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -59,7 +56,7 @@ public class QuestionService {
 
     }
 
-    public Question createQuestion (QuestionDTO questionDTO) throws BadRequestAlertException {
+    public QuestionDTO createQuestion (QuestionDTO questionDTO) throws BadRequestAlertException {
 
         // Current User
         Optional<User> u = userService.getUserWithAuthoritiesByLogin(SecurityUtils.getCurrentUserLogin().get());
@@ -68,30 +65,21 @@ public class QuestionService {
         Optional<User> user = userRepository.findById(u.get().getId());
         System.out.print("user yetkisiiii: " + user.get().getAuthorities());
 
-        Question question = new Question();
+    //    Question question = new Question();
 
         if (user.get().getAuthorities().stream().filter(x->x.getName().equals("ROLE_ADMIN")).collect(Collectors.toList()).isEmpty()) {
             //          System.out.print("\n hatalı: " + user.get().getAuthorities());
             //           System.out.print("\n hatalı id: " + u.get().getId() + "\n ");
             throw new BadRequestAlertException("Yalnızca Admin Rolü Soru ekleyebilir!! ", null, "test");
         }
-        //       System.out.print("\n hatasız: " + user.get().getAuthorities());
-        //       System.out.print("\n hatasız id: " + u.get().getId() + "\n ");
-      question.setValue(questionDTO.getValue());
+        
+        Question question = questionMapper.questionDTOToQuestion(questionDTO);
+        question = questionRepository.save(question);
+        return questionMapper.questionToQuestionDTO(question);
 
-//  question.setTest();
-        if (questionDTO.getTestDTOS() != null) {
-            Set<Test> test = questionDTO.getTestDTOS().stream()
-                .map(testRepository::findById)
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .collect(Collectors.toSet());
-            question.setTest(test);
-        }
 
-        questionRepository.save(question);
-        return question;
     }
+
 
 
 

@@ -5,8 +5,8 @@ import java.util.Set;
 public class QuestionDTO {
     private Long id;
     private String value;
-    private Set<TestDTO> testDTOS;
 
+    private Set<TestDTO> testDTOS;
     public Long getId() {
         return id;
     }
